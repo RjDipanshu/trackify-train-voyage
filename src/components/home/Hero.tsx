@@ -97,18 +97,20 @@ const Hero = () => {
             <div className="relative">
               <label htmlFor="to" className="block text-sm font-medium text-gray-700 mb-1">To</label>
               <div className="flex">
-                <Select value={to} onValueChange={setTo} className="w-full">
-                  <SelectTrigger id="to">
-                    <SelectValue placeholder="Select station" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {stations.map((station) => (
-                      <SelectItem key={station.value} value={station.value}>
-                        {station.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <div className="w-full">
+                  <Select value={to} onValueChange={setTo}>
+                    <SelectTrigger id="to">
+                      <SelectValue placeholder="Select station" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {stations.map((station) => (
+                        <SelectItem key={station.value} value={station.value}>
+                          {station.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
                 
                 {/* Swap button for desktop */}
                 <Button 
@@ -147,6 +149,7 @@ const Hero = () => {
                     onSelect={setDate}
                     initialFocus
                     disabled={(date) => date < new Date()}
+                    className="p-3 pointer-events-auto"
                   />
                 </PopoverContent>
               </Popover>
